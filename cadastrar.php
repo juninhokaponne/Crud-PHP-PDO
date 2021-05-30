@@ -8,10 +8,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<h1>C, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crud</title>
 </head>
 <body>
     <h1>Cadastrar</h1>
+    <?php
+      $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+        if (!empty($dados['CadUsuario'])){
+            $query_usuario = "INSERT INTO usuarios (nome,email) 
+            VALUES ('" . $dados['nome'] . "', '".$dados['email'] . "') ";
+
+            // Preparando query
+            $cad_usuario = $conn->prepare($query_usuario);
+            $cad_usuario->execute();
+        }
+    ?>
     <form name="cad-usuario" method="POST" action="">
         <label>Nome: </label>
         <input type="text" name="nome" id="nome" placeholder="Nome completo"> <br><br>
