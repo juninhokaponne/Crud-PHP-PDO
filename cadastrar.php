@@ -22,7 +22,15 @@
             // Preparando query
             $cad_usuario = $conn->prepare($query_usuario);
             $cad_usuario->execute();
+
+            //Mostrar usuario cadastro realizado
+            if ($cad_usuario->rowCount()){
+                echo "<p style='color: green;'>Usario cadastrado com sucesso!</p>";
+            }else{
+                echo "<p style ='color: #ff0000;'>Erro: Usuario não cadastrado com sucesso!</p>";
+            };
         }
+
     ?>
     <form name="cad-usuario" method="POST" action="">
         <label>Nome: </label>
