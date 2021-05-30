@@ -17,10 +17,12 @@
 
         if (!empty($dados['CadUsuario'])){
             $query_usuario = "INSERT INTO usuarios (nome,email) 
-            VALUES ('" . $dados['nome'] . "', '".$dados['email'] . "') ";
+            VALUES (:nome, :email) ";
 
             // Preparando query
             $cad_usuario = $conn->prepare($query_usuario);
+            $cad_usuario->bindParam(':nome', $dados['nome'],PDO::PARAM_STR);
+            $cad_usuario->bindParam(':email', $dados['email'],PDO::PARAM_STR);
             $cad_usuario->execute();
 
             //Mostrar usuario cadastro realizado
