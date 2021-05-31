@@ -13,8 +13,4 @@ $conn = new PDO("mysql:host=$host;port=$port;dbname=".$dbname, $user, $pass);
 // $conn = new PDO("mysql:host=$host;dbname=".$dbname, $user, $pass);
 
 
-
-
-
-
 ?>
